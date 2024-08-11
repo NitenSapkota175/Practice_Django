@@ -3,5 +3,6 @@ from django.http import HttpResponse
 # Create your views here.
 
 def learn_django(request):
-    return HttpResponse("<h1>Hello welcome to django course<h2>")
+   context = {"name" : "django" , "duration" : "2 months "}
+   return render(request,'course/course.html',context)
 
