@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h5>{{try|default:"nothing"}}</h5>
+            <h1>Course name : {{name | capfirst}} , Duration : {{duration}} </h1>
+            <h4>{{ name | length }}</h4>
+            <h4>{{name | upper}}</h4>
+            <h4>{{name|slice:'4:8'}}</h4>
+            <h4>{{name |truncatechars:3}}</h4>
+            <h4>{{name |truncatewords:2}}</h4>
+
+            <h1>Date and time</h1>
+            <p>{{ d|date:"D d M Y"}}</p>
+            <p>{{ d|time:"H:i"}}</p>
+            <p>{{d| time:"SHORT_DATE_FORMAT"}}</p>
+            <p>{{d| time:"TIME_FORMAT"}}</p>
+
+
+            <h1>Float</h1>
+            <h3>Example 5.1</h3>
+            <h3>{{fl}}</h3>
+
+            <h3>Example 5.2</h3>
+            <h3>{{fl|floatformat}}</h3>
+
+            <h3>Example 5.3</h3>
+            <h3>{{fl|floatformat:3}}</h3>
+
+            <h3>Example 5.4</h3>
+            <h3>{{fl|floatformat:0}}</h3>
+
+            <h3>Example 5.5</h3>
+            <h3>{{fl|floatformat:-3}}</h3>
+</body>
+</html>

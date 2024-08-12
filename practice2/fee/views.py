@@ -3,5 +3,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def fee_structure(request):
-    return HttpResponse("<h1>django course fee_structure<h2>")
+    return render(request,'fee/fees.html')
 
