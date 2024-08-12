@@ -24,3 +24,4 @@ def learn_django(request):
 
    return render(request,'course/course.html' ,students )
 
+
