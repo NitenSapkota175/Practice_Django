@@ -41,7 +41,8 @@
             <h3>{{fl|floatformat:-3}}</h3> 
             -->
 
-
+<!-- 
+            if and else ,.....it also have elif 
             {% if nm %}
                 <h3>Hello {{nm}}</h3>
             {%else%}
@@ -60,8 +61,43 @@
             <h3>length is greater thann  5</h3>
             {%else%}
             <h3>length is smaller than 5 </h3>
-            {%endif%}
+            {%endif%} 
+            
+            -->
+            
+            <!--
+            
+                    for loops 
+            
+            {% for nm in name %}
+            {{nm}}<br>
+            {%endfor%}
 
+            <hr>
+            {% for nm in name reversed%}
+            {{nm}}<br>
+            {%endfor%}
+
+            <hr>
+            {% for nm in name reversed%}
+            {{nm}}<br>
+            {%empty%}
+                <p>this will run when there no values for reversed no </p>
+            {%endfor%}
+
+                <hr>
+
+            {% for nm in name reversed%}
+            {{forloop.counter}}{{nm}}<br>
+            {%endfor%} -->
+
+
+            {% for key , value in student.items %}
+            <h5>{{key}} , {{value}}</h5>
+            {% for k , v in value.items %}
+                {{forloop.parentloop.counter}} {{k}} = {{v}}
+            {%endfor%}
+            {%endfor%}
 
 
 
