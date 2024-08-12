@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-            <h5>{{try|default:"nothing"}}</h5>
+ <body>
+<!--            
+    
+        VARIABLE AND FILTER
+        <h5>{{try|default:"nothing"}}</h5>
             <h1>Course name : {{name | capfirst}} , Duration : {{duration}} </h1>
             <h4>{{ name | length }}</h4>
             <h4>{{name | upper}}</h4>
@@ -35,6 +38,33 @@
             <h3>{{fl|floatformat:0}}</h3>
 
             <h3>Example 5.5</h3>
-            <h3>{{fl|floatformat:-3}}</h3>
+            <h3>{{fl|floatformat:-3}}</h3> 
+            -->
+
+
+            {% if nm %}
+                <h3>Hello {{nm}}</h3>
+            {%else%}
+                <h3>Bye</h3>
+            {%endif %}
+
+
+            {%if nm  and st %}
+            <h3>{{nm}} {{st}} is here , hello guys</h3>
+            {%else%}
+            <h3>Hi world</h3>
+            {%endif%}
+
+
+            {%if nm|length >= 5 and st == 5 %}
+            <h3>length is greater thann  5</h3>
+            {%else%}
+            <h3>length is smaller than 5 </h3>
+            {%endif%}
+
+
+
+
+
 </body>
 </html>
