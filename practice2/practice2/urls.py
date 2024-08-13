@@ -20,8 +20,8 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('',views.home),
-     path('aboutus/',views.about_us),
+     path('',views.home,name="Home"),
+     path('aboutus/',views.about_us,name="Aboutus"),
 
     path('course/',include('course.urls')),
     path("fee/",include('fee.urls')),
