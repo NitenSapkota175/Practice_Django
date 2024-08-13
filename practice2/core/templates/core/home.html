@@ -1,3 +1,12 @@
 {%extends 'core/base.html'%}
 {%block title %} Home {%endblock title%}
-{% block content %}Home page {% endblock content%}
+{% block content %}
+
+    Home page 
+
+{% comment %} {%include 'core/topcourse.html' %} {% endcomment %}
+
+{% comment %} {%include 'core/topcourse.html' with p='php'%} {% endcomment %}
+{%include 'core/topcourse.html' with p='php' only%}{%comment %}this will let only one varianle in topcourses {%endcomment%}
+
+{% endblock content%}
