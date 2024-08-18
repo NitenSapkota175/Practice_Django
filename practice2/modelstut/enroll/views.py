@@ -14,4 +14,6 @@ def student_details(request):
 
 def showformdata(request):
     fm = StudentRegistration()
+    # fm.order_fields(field_order=['email','name'])
+    # fm = StudentRegistration(auto_id=True,label_suffix=' ',initial={'name' : 'Niten'})
     return render(request,'enroll/registeruser.html',{'form' : fm}) 
