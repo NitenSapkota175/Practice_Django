@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . models import Student
 from . forms import StudentRegistration
+from django.http import HttpResponseRedirect
 
 
 
@@ -20,9 +21,13 @@ def showformdata(request):
                  print('Name : ',name)
                  print('Email : ' ,email)
 
-
+                 return HttpResponseRedirect("/success/")
        else:
             print("Comming from Get request ")
             fm = StudentRegistration()
     
             return render(request,'enroll/registeruser.html',{'form' : fm}) 
+       
+
+def success(request):
+     return render(request,'enroll/success.html')
