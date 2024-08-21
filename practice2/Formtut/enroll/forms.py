@@ -1,22 +1,45 @@
 from django import forms
+from django.core import validators
+
+
+#### custom validator #############################33
+def start_with_s(value):
+        if value[0].lower() != 's' : 
+                raise forms.ValidationError("Name must start with s or S")
+
+
+
 
 class StudentRegistration(forms.Form):
     
-        name = forms.CharField()
-        email = forms.EmailField()
+       
+
+       ######### custom validator ####################
+        name = forms.CharField(validators=[start_with_s])
+        email = forms.EmailField() 
+       
+       
+       
+       ######################  built in validators ###################333
+       
+        # name = forms.CharField(validators=[validators.MaxLengthValidator(10)])
+        # email = forms.EmailField()
+       
+       
+       
         # password = forms.CharField(widget=forms.PasswordInput)
 
-        def clean(self):
+        # def clean(self):
                 
-                cleaned_data = super().clean()
-                valname = cleaned_data['name']
-                valemail = cleaned_data['email']
+        #         cleaned_data = super().clean()
+        #         valname = cleaned_data['name']
+        #         valemail = cleaned_data['email']
 
-                if len(valname) < 4 :
-                        raise forms.ValidationError('Name should be more than 4 charcters')
+        #         if len(valname) < 4 :
+        #                 raise forms.ValidationError('Name should be more than 4 charcters')
                 
-                if len(valemail) < 15:
-                        raise forms.ValidationError('Email should be more than 15 charcters')
+        #         if len(valemail) < 15:
+        #                 raise forms.ValidationError('Email should be more than 15 charcters')
 
 
         # def clean_name(self):
