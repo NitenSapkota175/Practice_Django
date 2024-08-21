@@ -2,21 +2,71 @@ from django import forms
 from django.core import validators
 
 
-#### custom validator #############################33
-def start_with_s(value):
-        if value[0].lower() != 's' : 
-                raise forms.ValidationError("Name must start with s or S")
-
-
-
 
 class StudentRegistration(forms.Form):
+    name = forms.CharField()
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    rpassword = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+
+        cleaned_data = super().clean()
+        valpass = cleaned_data['password']
+        valrpass = cleaned_data['rpassword']
+
+        if valpass != valrpass:
+            raise  forms.ValidationError("you password doesn't match ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### custom validator #############################33
+# def start_with_s(value):
+#         if value[0].lower() != 's' : 
+#                 raise forms.ValidationError("Name must start with s or S")
+
+
+
+
+# class StudentRegistration(forms.Form):
     
        
 
        ######### custom validator ####################
-        name = forms.CharField(validators=[start_with_s])
-        email = forms.EmailField() 
+        # name = forms.CharField(validators=[start_with_s])
+        # email = forms.EmailField() 
        
        
        
