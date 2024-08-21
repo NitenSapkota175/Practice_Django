@@ -4,7 +4,19 @@ class StudentRegistration(forms.Form):
     
         name = forms.CharField()
         email = forms.EmailField()
-        password = forms.CharField(widget=forms.PasswordInput)
+        # password = forms.CharField(widget=forms.PasswordInput)
+
+        def clean(self):
+                
+                cleaned_data = super().clean()
+                valname = cleaned_data['name']
+                valemail = cleaned_data['email']
+
+                if len(valname) < 4 :
+                        raise forms.ValidationError('Name should be more than 4 charcters')
+                
+                if len(valemail) < 15:
+                        raise forms.ValidationError('Email should be more than 15 charcters')
 
 
         # def clean_name(self):

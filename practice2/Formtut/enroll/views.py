@@ -18,27 +18,27 @@ def showformdata(request):
             if fm.is_valid():
                  name = fm.cleaned_data['name']
                  email = fm.cleaned_data['email']
-                 password = fm.cleaned_data['password']
+                #  password = fm.cleaned_data['password']
                #   rollno = fm.cleaned_data['roll']
                #   agree = fm.cleaned_data['agree']
                #   price = fm.cleaned_data['price']
                #   rate = fm.cleaned_data['rate']
                  print('Name : ',name)
                  print('Email : ' ,email)
-                 print('password : ' ,password)
+                #  print('password : ' ,password)
 
                #   print('roll : ',rollno)
                #   print('agree : ' ,agree)
                #   print('price : ',price)
                #   print('Rate : ',rate)
-                 return HttpResponseRedirect("/success/")
+                #  return HttpResponseRedirect("/success/")
 
                  
        else:
             print("Comming from Get request ")
             fm = StudentRegistration()
     
-            return render(request,'enroll/registeruser.html',{'form' : fm}) 
+       return render(request,'enroll/registeruser.html',{'form' : fm}) 
        
 
 def success(request):
