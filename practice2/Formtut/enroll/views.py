@@ -18,14 +18,16 @@ def showformdata(request):
             if fm.is_valid():
                  name = fm.cleaned_data['name']
                  email = fm.cleaned_data['email']
-                #  password = fm.cleaned_data['password']
+                 password = fm.cleaned_data['password']
+                 rpassword = fm.cleaned_data['rpassword']
                #   rollno = fm.cleaned_data['roll']
                #   agree = fm.cleaned_data['agree']
                #   price = fm.cleaned_data['price']
                #   rate = fm.cleaned_data['rate']
                  print('Name : ',name)
                  print('Email : ' ,email)
-                #  print('password : ' ,password)
+                 print('password : ' ,password)
+                 print('rpassword : ' ,rpassword)
 
                #   print('roll : ',rollno)
                #   print('agree : ' ,agree)
