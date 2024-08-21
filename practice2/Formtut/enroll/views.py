@@ -18,9 +18,16 @@ def showformdata(request):
             if fm.is_valid():
                  name = fm.cleaned_data['name']
                  email = fm.cleaned_data['email']
+                 rollno = fm.cleaned_data['roll']
+                 agree = fm.cleaned_data['agree']
+                 price = fm.cleaned_data['price']
+                 rate = fm.cleaned_data['rate']
                  print('Name : ',name)
                  print('Email : ' ,email)
-
+                 print('roll : ',rollno)
+                 print('agree : ' ,agree)
+                 print('price : ',price)
+                 print('Rate : ',rate)
                  return HttpResponseRedirect("/success/")
        else:
             print("Comming from Get request ")
