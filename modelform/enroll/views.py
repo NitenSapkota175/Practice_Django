@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from . models import User
 from . forms import StudentRegistration
 from django.http import HttpResponseRedirect
+from django.http import Http404
+
+def home(request):
+     return render(request,'enroll/home.html')
 
 def showformdata(request):
 
@@ -35,3 +39,24 @@ def showformdata(request):
        return render(request,'enroll/registeruser.html',{'form' : fm}) 
        
 
+def student_details(request):
+      users = User.objects.all()
+      return render(request,'enroll/studetails.html' , {'stu' : users})
+
+
+def updatestudent(request,pk):
+      try:
+        user = User.objects.get(id=pk)
+      except User.DoesNotExist:
+          raise Http404("User does not exist")
+     
+      if request.method == 'POST':
+          form = StudentRegistration(request.POST, instance=user)
+          if form.is_valid():
+               form.save()  
+               return redirect('Home')
+      else:
+    
+        form = StudentRegistration(instance=user)
+    
+      return render(request, 'enroll/editstudent.html', {'form': form})

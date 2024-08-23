@@ -19,19 +19,20 @@
         <table>
                 <tr>
                     <th>Id</th>
-                    <th>student id </th>
                     <th>student name</th>
                     <th>student email</th>
                     <th>student pass</th>
+                    <th>Edit</th>
                 </tr>
 
                 {% for st in stu%}
                 <tr>
                     <td> {{st.id}}</td>
-                    <td> {{st.stuid}}</td>
-                    <td>  {{st.stuname}}</td>
-                    <td>{{st.stuemail}}</td>
-                    <td> {{st.stupass}}</td>
+                    <td>{{st.name}}</td>
+                    <td>{{st.email}}</td>
+                    <td>{{st.password}}</td>
+                    <td> <a href= "{%url 'editstu' st.id %}">  Edit </a></td>
+                
                 </tr>
                 {% endfor %}
         </table> 
