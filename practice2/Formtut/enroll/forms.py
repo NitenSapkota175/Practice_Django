@@ -4,18 +4,18 @@ from django.core import validators
 
 
 class StudentRegistration(forms.Form):
-    name = forms.CharField()
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    rpassword = forms.CharField(widget=forms.PasswordInput)
+    name = forms.CharField(min_length= 5,max_length=20 ,error_messages={'required' : 'Enter Your Name'})
+    email = forms.EmailField(error_messages={'required' : 'Enter Your email'})
+    password = forms.CharField(widget=forms.PasswordInput,error_messages={'required' : 'Enter Your password'})
+    rpassword = forms.CharField(widget=forms.PasswordInput,error_messages={'required' : 'Re enter you password'})
 
     def clean(self):
 
         cleaned_data = super().clean()
-        valpass = cleaned_data['password']
-        valrpass = cleaned_data['rpassword']
+        valpass = cleaned_data.get('password')
+        valrpass = cleaned_data.get('rpassword')
 
-        if valpass != valrpass:
+        if  valpass is None and valpass != valrpass:
             raise  forms.ValidationError("you password doesn't match ")
 
 

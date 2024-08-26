@@ -16,10 +16,10 @@ def showformdata(request):
        if request.method == 'POST':
             fm = fm = StudentRegistration(request.POST)
             if fm.is_valid():
-                 name = fm.cleaned_data['name']
-                 email = fm.cleaned_data['email']
-                 password = fm.cleaned_data['password']
-                 rpassword = fm.cleaned_data['rpassword']
+                 name = fm.cleaned_data.get('name')
+                 email = fm.cleaned_data.get('email')
+                 password = fm.cleaned_data.get('password')
+                 rpassword = fm.cleaned_data.get('repassword')
                #   rollno = fm.cleaned_data['roll']
                #   agree = fm.cleaned_data['agree']
                #   price = fm.cleaned_data['price']
@@ -34,6 +34,7 @@ def showformdata(request):
                #   print('price : ',price)
                #   print('Rate : ',rate)
                 #  return HttpResponseRedirect("/success/")
+          
 
                  
        else:
