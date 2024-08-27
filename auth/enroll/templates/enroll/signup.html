@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Singup</title>
+    <style>
+        .er{
+            color : red;
+        }
+
+</style>
 </head>
 <body>
     <form action="" method="POST">
                
         
                 {%csrf_token%}
+
+                {% if forms.non_field_errors%}
+
+                {%for error in forms.non_field_errors%}
+                     <p class="er">    {{error}} </p>
+                {%endfor %}
+
+
+            {%endif%}
+
+
+
+
+
+
                 {% for fi in forms %}
                         {{fi.label_tag}} {{fi}} {{fi.errors|striptags}}<br><br>
                 {%endfor%}
                 <input type="submit" value="submit">
-
+                <br><br>
+                <a href="{% url 'login' %}" >login</a>
 
     </form>
 </body>
