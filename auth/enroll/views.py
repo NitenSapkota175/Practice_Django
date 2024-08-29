@@ -1,8 +1,9 @@
 from django.shortcuts import render,HttpResponseRedirect
-from . forms import SignUpForm,EditUserProfileForm
+from . forms import SignUpForm,EditUserProfileForm,EditAdimProfileForm
 from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm,UserChangeForm
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 from django.contrib import messages
+from django.contrib.auth.models import User
 def sign_up(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
@@ -44,16 +45,26 @@ def user_profile(request):
 
     if request.user.is_authenticated:
         if request.method == 'POST':
-            fm = EditUserProfileForm(request.POST,instance=request.user)
+
+            if request.user.is_superuser == True:
+                fm = EditAdimProfileForm(request.POST,instance=request.user)
+                user = User.objects.all()
+
+            else:
+                fm = EditUserProfileForm(request.POST,instance=request.user)
+                user = None
             if fm.is_valid():
-                messages.success(request,'Profile update')
+                messages.success(request,'Profile updated')
                 fm.save()
             
         else:
-
-            fm = EditUserProfileForm(instance=request.user)
-
-        return render(request,'enroll/profile.html',{'name' : request.user,'forms' : fm})
+            if  request.user.is_superuser == True:
+                fm = EditAdimProfileForm(instance=request.user)
+                user = User.objects.all()
+            else: 
+                fm = EditUserProfileForm(instance=request.user)
+                user = None
+        return render(request,'enroll/profile.html',{'name' : request.user,'forms' : fm , 'users' : user})
     else:
         return HttpResponseRedirect('/login/')
 
@@ -105,3 +116,16 @@ def user_change_pass1(request):
         return HttpResponseRedirect('/login/')
     
 
+def show_user_details(request,pk):
+    if request.user.is_authenticated:
+        pi = User.objects.get(id=pk)
+        if request.method == 'POST':
+            fm = EditUserProfileForm(request.POST,instance=pi)
+            if fm.is_valid():
+                fm.save()
+                messages.success(request , f"You have the user details {pi}")
+                return HttpResponseRedirect('/profile/')
+        else:
+             fm = EditUserProfileForm(instance=pi)
+
+    return render(request,'enroll/userdetails.html' , {'forms' : fm}) 

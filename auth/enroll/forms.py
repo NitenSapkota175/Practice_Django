@@ -14,3 +14,12 @@ class EditUserProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ['username','first_name' , 'last_name' , 'email' , 'date_joined']
+
+
+
+class EditAdimProfileForm(UserChangeForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = '__all__'
