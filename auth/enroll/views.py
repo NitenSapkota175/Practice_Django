@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponseRedirect
-from . forms import SignUpForm
-from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm
+from . forms import SignUpForm,EditUserProfileForm
+from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm,UserChangeForm
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 from django.contrib import messages
 def sign_up(request):
@@ -43,8 +43,17 @@ def user_login(request):
 def user_profile(request):
 
     if request.user.is_authenticated:
+        if request.method == 'POST':
+            fm = EditUserProfileForm(request.POST,instance=request.user)
+            if fm.is_valid():
+                messages.success(request,'Profile update')
+                fm.save()
+            
+        else:
 
-        return render(request,'enroll/profile.html',{'name' : request.user})
+            fm = EditUserProfileForm(instance=request.user)
+
+        return render(request,'enroll/profile.html',{'name' : request.user,'forms' : fm})
     else:
         return HttpResponseRedirect('/login/')
 
@@ -94,3 +103,5 @@ def user_change_pass1(request):
 
     else:
         return HttpResponseRedirect('/login/')
+    
+
