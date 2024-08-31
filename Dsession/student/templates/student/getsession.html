@@ -8,5 +8,29 @@
 <body>
         <h2>Get session</h2>
         <h3>{{name}}</h3>
+
+        <h3>{{request.session.get_session_cookie_age}}</h3>
+        <h3>{{request.session.get_expiry_age}}</h3>
+        <h3>{{request.session.get_expiry_date}}</h3>
+        <h3>{{request.session.get_expire_at_browser_close}}</h3>
+
+
+
+        {% comment %} {% for key in request.session.keys%}
+                {{key}}
+        {% endfor %} {% endcomment %}
+
+{% comment %} 
+        {% for key in keys%}
+                {{key}}
+        {%endfor%}
+
+
+        {% for item in items%}
+                {{item}}
+        {%endfor%}
+
+        {{age}}         {% endcomment %}
+
 </body>
 </html>
