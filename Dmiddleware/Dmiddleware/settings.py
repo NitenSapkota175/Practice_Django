@@ -39,10 +39,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'blog.middlewares.my_middleware',
-    'blog.middlewares.BotherMiddleware',
-    'blog.middlewares.FatherMiddleware',
-    'blog.middlewares.MotherMiddleware'
-
+    # 'blog.middlewares.BotherMiddleware',
+    # 'blog.middlewares.FatherMiddleware',
+    # 'blog.middlewares.MotherMiddleware'
+    'blog.middlewares.MyProcessMiddleware',
+    'blog.middlewares.MyExceptionMiddleware',
+    'blog.middlewares.MyTemplateResponseMiddleware',
 
 ]
 
