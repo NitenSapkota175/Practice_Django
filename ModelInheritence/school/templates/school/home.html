@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        table,th,tr,td{
+            border : 1px solid black;
+            padding : 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Student information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Fee</th>
+            </tr>
+            {% for stu in students %}
+            <tr>
+                
+                <td>{{stu.id}}</td>
+                <td>{{stu.name}}</td>
+                <td>{{stu.age}}</td>
+                <td>{{stu.fees}}</td>
+               
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+
+
+    <h3>Teacher information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+            {% for te in teachers %}
+            <tr>
+                
+                <td>{{te.id}}</td>
+                <td>{{te.name}}</td>
+                <td>{{te.age}}</td>
+                <td>{{te.salary}}</td>
+                
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+
+
+    <h3>Contractors information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Payment</th>
+            </tr>
+            {% for con in contractors %}
+            <tr>
+                
+                <td>{{con.id}}</td>
+                <td>{{con.name}}</td>
+                <td>{{con.age}}</td>
+                <td>{{con.payment}}</td>
+                
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
