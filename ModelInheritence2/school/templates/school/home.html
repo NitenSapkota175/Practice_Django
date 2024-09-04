@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        table,th,tr,td{
+            border : 1px solid black;
+            padding : 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Student information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Fee</th>
+            </tr>
+            {% for stu in students %}
+            <tr>
+                
+                <td>{{stu.id}}</td>
+                <td>{{stu.name}}</td>
+                <td>{{stu.roll}}</td>       
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+
+
+    <h3>Exam center information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>cname</th>
+                <th>City</th>
+            </tr>
+            {% for e in examcenters %}
+            <tr>
+                
+                <td>{{e.id}}</td>
+                <td>{{e.cname}}</td>
+                <td>{{e.city}}</td>
+                
+                
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+</body>
+</html>
