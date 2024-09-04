@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        table,th,tr,td{
+            border : 1px solid black;
+            padding : 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Student information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>cname</th>
+                <th>city</th>
+                
+            </tr>
+            {% for ex in exam_center %}
+            <tr>
+                
+                <td>{{ex.id}}</td>
+                <td>{{ex.cname}}</td>
+                <td>{{ex.city}}</td>
+               
+               
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+
+
+    <h3>mycenter information</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>cname</th>
+                <th>city</th>
+            </tr>
+            {% for mye in my_exam_center %}
+            <tr>
+                
+                <td>{{mye.id}}</td>
+                <td>{{mye.cname}}</td>
+                <td>{{mye.city}}</td>
+          
+                
+            </tr>
+            {%endfor%}
+        </thead>
+    </table>
+</body>
+</html>
